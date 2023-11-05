@@ -3,6 +3,7 @@ import './styles/global.css';
 import type {} from 'svelte';
 import App from './App.svelte';
 import CairoApp from './cairo/App.svelte';
+import MinaApp from './mina/App.svelte';
 import { postMessage } from './post-message';
 
 function postResize() {
@@ -23,6 +24,8 @@ const lang = params.get('lang');
 let app;
 if (lang === 'cairo') {
   app = new CairoApp({ target: document.body, props: { initialTab } });
+} else if (lang === 'mina') {
+  app = new MinaApp({ target: document.body, props: { initialTab } });
 } else {
   app = new App({ target: document.body, props: { initialTab } });
 }

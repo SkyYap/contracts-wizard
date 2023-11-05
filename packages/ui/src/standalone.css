@@ -92,6 +92,11 @@ body {
   --color-2: var(--cairo-orange-2);
 }
 
+.header .switch.switch-mina {
+  --color-1: var(--mina-purple-1);
+  --color-2: var(--mina-purple-2);
+}
+
 .header .link {
   color: var(--text-color);
   display: block;

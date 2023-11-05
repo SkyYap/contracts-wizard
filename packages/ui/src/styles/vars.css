@@ -32,6 +32,9 @@
   --cairo-orange-1: #fe9149;
   --cairo-orange-2: #fe4a3c;
 
+  --mina-purple-1: #C677BD;
+  --mina-purple-2: #8871EF;
+
   /* Dimensions (scale taken from Tailwind) */
 
   --size-1: 0.25rem;
