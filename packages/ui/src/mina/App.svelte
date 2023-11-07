@@ -3,9 +3,9 @@
 
     import hljs from './highlightjs';
 
-    import ERC20Controls from './ERC20Controls.svelte';
-    import ERC721Controls from './ERC721Controls.svelte';
-    import ERC1155Controls from './ERC1155Controls.svelte';
+    // import ERC20Controls from './ERC20Controls.svelte';
+    // import ERC721Controls from './ERC721Controls.svelte';
+    // import ERC1155Controls from './ERC1155Controls.svelte';
     import CustomControls from './CustomControls.svelte';
     import CopyIcon from '../icons/CopyIcon.svelte';
     import CheckIcon from '../icons/CheckIcon.svelte';
@@ -85,7 +85,8 @@
   <div class="header flex flex-row justify-between">
     <div class="tab overflow-hidden">
       <OverflowMenu>
-        <button class:selected={tab === 'ERC20'} on:click={() => tab = 'ERC20'}>
+        <!-- TODO: Command out ERC20, ERC721 and ERC1155 -->
+        <!-- <button class:selected={tab === 'ERC20'} on:click={() => tab = 'ERC20'}>
           ERC20
         </button>
         <button class:selected={tab === 'ERC721'} on:click={() => tab = 'ERC721'}>
@@ -93,7 +94,7 @@
         </button>
         <button class:selected={tab === 'ERC1155'} on:click={() => tab = 'ERC1155'}>
           ERC1155
-        </button>
+        </button> -->
         <button class:selected={tab === 'Custom'} on:click={() => tab = 'Custom'}>
           Custom
         </button>
