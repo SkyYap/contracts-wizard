@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.9.0 (2024-02-12)
+
+- **Breaking changes**:
+  - Remove non-standard `safeAllowance` option from ERC20. ([#324](https://github.com/OpenZeppelin/contracts-wizard/pull/324))
+  - Use `abi(embed_v0)` attribute instead of `external` for impls derived from interfaces.
+  - Use `abi(per_item)` attribute instead of `external` for impls with generated traits.
+
+## 0.8.0 (2023-12-11)
+
+- **Breaking changes**:
+  - Use Cairo 1+ and OpenZeppelin Contracts for Cairo v0.8.0.
+  - Remove functions for `getInitialSupply` and `toUint256`.
+  - Remove ERC1155.
+  - Role-Based Access Control adds separate constructor arguments to assign different users for different roles.
+  - Throws error if `name` results in an identifer that is empty or does not have valid characters.
+  - Throws error if `name` or `symbol` result in strings longer than 31 characters.
+
 ## 0.6.0 (2023-01-11)
 
 - Add ERC1155. ([#167](https://github.com/OpenZeppelin/contracts-wizard/pull/167))

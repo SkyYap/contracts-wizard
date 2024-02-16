@@ -3,9 +3,10 @@
 
   export let link: string | undefined = undefined;
   export let align: 'right' | undefined = undefined;
+  export let placement: 'top' | 'bottom' | 'left' | 'right' = 'right';
 </script>
 
-<Tooltip let:trigger interactive placement="right" theme="light-yellow border" maxWidth="15em">
+<Tooltip let:trigger interactive placement={placement} theme="light-yellow border" maxWidth="22em">
   <svg
     use:trigger
     class="tooltip"

@@ -5,7 +5,6 @@
 
     import ERC20Controls from './ERC20Controls.svelte';
     import ERC721Controls from './ERC721Controls.svelte';
-    import ERC1155Controls from './ERC1155Controls.svelte';
     import CustomControls from './CustomControls.svelte';
     import CopyIcon from '../icons/CopyIcon.svelte';
     import CheckIcon from '../icons/CheckIcon.svelte';
@@ -34,7 +33,7 @@
     let allOpts: { [k in Kind]?: Required<KindedOptions[k]> } = {};
     let errors: { [k in Kind]?: OptionsErrorMessages } = {};
 
-    let contract: Contract = new ContractBuilder();
+    let contract: Contract = new ContractBuilder('MyToken');
 
     $: opts = allOpts[tab];
 
@@ -91,9 +90,9 @@
         <button class:selected={tab === 'ERC721'} on:click={() => tab = 'ERC721'}>
           ERC721
         </button>
-        <button class:selected={tab === 'ERC1155'} on:click={() => tab = 'ERC1155'}>
+        <!-- <button class:selected={tab === 'ERC1155'} on:click={() => tab = 'ERC1155'}>
           ERC1155
-        </button>
+        </button>-->
         <button class:selected={tab === 'Custom'} on:click={() => tab = 'Custom'}>
           Custom
         </button>
@@ -121,7 +120,7 @@
           <FileIcon />
           <div class="download-option-content">
             <p>Single file</p>
-            <p>Requires installation of Python package (<code>openzeppelin-cairo-contracts</code>).</p>
+            <p>Requires a Scarb project with <code>openzeppelin</code> as a dependency.</p>
           </div>
         </button>
       </Dropdown>
@@ -129,22 +128,19 @@
   </div>
 
   <div class="flex flex-row gap-4 grow">
-    <div class="controls w-64 flex flex-col shrink-0 justify-between">
+    <div class="controls w-64 flex flex-col shrink-0 justify-between h-[calc(100vh-84px)] overflow-auto">
       <div class:hidden={tab !== 'ERC20'}>
         <ERC20Controls bind:opts={allOpts.ERC20} errors={errors.ERC20} />
       </div>
       <div class:hidden={tab !== 'ERC721'}>
-        <ERC721Controls bind:opts={allOpts.ERC721} />
-      </div>
-      <div class:hidden={tab !== 'ERC1155'}>
-        <ERC1155Controls bind:opts={allOpts.ERC1155} />
+        <ERC721Controls bind:opts={allOpts.ERC721} errors={errors.ERC721}/>
       </div>
       <div class:hidden={tab !== 'Custom'}>
-        <CustomControls bind:opts={allOpts.Custom} />
+        <CustomControls bind:opts={allOpts.Custom} errors={errors.Custom}/>
       </div>
     </div>
-    <div class="output flex flex-col grow overflow-auto">
-    <pre class="flex flex-col grow basis-0 overflow-auto"><code class="hljs grow overflow-auto p-4">{@html highlightedCode}</code></pre>
+    <div class="output flex flex-col grow overflow-auto h-[calc(100vh-84px)]">
+      <pre class="flex flex-col grow basis-0 overflow-auto"><code class="hljs grow overflow-auto p-4">{@html highlightedCode}</code></pre>
     </div>
   </div>
 </div>
@@ -155,7 +151,6 @@
     border: 1px solid var(--gray-2);
     border-radius: 10px;
     min-width: 32rem;
-    min-height: 53rem;
   }
 
   .header {
